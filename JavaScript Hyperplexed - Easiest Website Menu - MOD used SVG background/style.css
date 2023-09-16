@@ -1,0 +1,125 @@
+body {
+  background-color: rgb(20,20,20);
+  margin: 0px;
+}
+
+#menu {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+}
+
+#menu-items {
+  margin-left: clamp(4rem, 20vw, 48rem);
+  position: relative;
+  z-index: 2;
+}
+
+#menu-items:hover > .menu-item {
+  opacity: 0.3;
+}
+
+/* currently hovered menu item will override with regular opacity */
+#menu-items:hover > .menu-item:hover {
+  opacity: 1;
+}
+
+.menu-item {
+  color: white;
+  font-size: clamp(3rem, 8vw, 8rem);
+  font-family: "Ibarra Real Nova", serif;
+  
+  display: block;
+  text-decoration: none;
+  padding: clamp(0.25rem, 0.5vw, 1rem) 0rem;
+  transition: opacity 400ms ease;
+}
+
+#menu-background-pattern {
+  height: 100vh;
+  width: 100vw;
+  
+  /* tiled dot pattern using radial gradient */
+/*    background-image: radial-gradient(
+    rgba(255, 255, 255, 0.1) 9%,
+    transparent 9%
+  );  */
+background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='-320 -256 1280 1024' width='100' %3E%3Cpath d='M256 336h-.02c0-16.18 1.34-8.73-85.05-181.51-17.65-35.29-68.19-35.36-85.87 0C-2.06 328.75.02 320.33.02 336H0c0 44.18 57.31 80 128 80s128-35.82 128-80zM128 176l72 144H56l72-144zm511.98 160c0-16.18 1.34-8.73-85.05-181.51-17.65-35.29-68.19-35.36-85.87 0-87.12 174.26-85.04 165.84-85.04 181.51H384c0 44.18 57.31 80 128 80s128-35.82 128-80h-.02zM440 320l72-144 72 144H440zm88 128H352V153.25c23.51-10.29 41.16-31.48 46.39-57.25H528c8.84 0 16-7.16 16-16V48c0-8.84-7.16-16-16-16H383.64C369.04 12.68 346.09 0 320 0s-49.04 12.68-63.64 32H112c-8.84 0-16 7.16-16 16v32c0 8.84 7.16 16 16 16h129.61c5.23 25.76 22.87 46.96 46.39 57.25V448H112c-8.84 0-16 7.16-16 16v32c0 8.84 7.16 16 16 16h416c8.84 0 16-7.16 16-16v-32c0-8.84-7.16-16-16-16z' fill='%23a3a3a31a'/%3E%3C/svg%3E");
+  background-position: 0% 0%;
+  background-size: 12vmin 12vmin;
+  
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  z-index: 1;
+  
+  transition: opacity 800ms ease,
+    background-size 800ms ease,
+    background-position 800ms ease;
+}
+
+/* reduces bg pattern size and opacity when menu items are hovered */
+#menu-items:hover ~ #menu-background-pattern {
+  background-size: 11vmin 11vmin;
+  opacity: 0.5;
+}
+
+/* bg position changes when a menu item is selected */
+#menu[data-active-index="0"] > #menu-background-pattern {
+  background-position: 0% -25%;
+}
+
+#menu[data-active-index="1"] > #menu-background-pattern {
+  background-position: 0% -50%;
+}
+
+#menu[data-active-index="2"] > #menu-background-pattern {
+  background-position: 0% -75%;
+}
+
+#menu[data-active-index="3"] > #menu-background-pattern {
+  background-position: 0% -100%;
+}
+
+
+#menu-background-image {
+  height: 100%;
+  width: 100%;
+    
+  background-image: url("https://images.unsplash.com/photo-1690672026269-7712bcfe517e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80");
+  
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  z-index: 0;
+  
+  background-position: center 40%;
+  background-size: 110vmax;
+  opacity: 0.35;
+  
+  transition: opacity 800ms ease,
+    background-size 800ms ease,
+    background-position 800ms ease;
+}
+
+#menu-items:hover ~ #menu-background-image {
+  background-size: 100vmax;
+  opacity: 0.1;
+}
+
+/* bg image position changes when a menu item is selected */
+#menu[data-active-index="0"] > #menu-background-image {
+  background-position: center 45%;
+}
+
+#menu[data-active-index="1"] > #menu-background-image {
+  background-position: center 50%;
+}
+
+#menu[data-active-index="2"] > #menu-background-image {
+  background-position: center 55%;
+}
+
+#menu[data-active-index="3"] > #menu-background-image {
+  background-position: center 60%;
+}

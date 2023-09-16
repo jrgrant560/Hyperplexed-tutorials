@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>HTML Hyperplexed - Hover Pulse Image</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div id="card">
+        <img src="https://assets.mubicdn.net/images/film/3420/image-w1280.jpg?1481127143">
+      </div>
+      
+      <!-- Yeah... I totally just copied what he did here. LOTS of documentation and experimentation needed to grasp all this -->
+      <svg style="display: none">
+        <defs>
+          <filter id="noise">
+            <!-- https://sean.brunnock.com/SVG/SVGTurbulenceGenerator/ -->
+            <!-- element that generates noise -->
+            <feTurbulence baseFrequency="0.7,0.8" seed="0" type="fractalNoise" result="static">
+              <!-- element that controls property value cnanges -->
+              <animate attributeName="seed" values="0;100" dur="800ms" repeatCount="1" begin="card.mouseover" />
+            </feTurbulence>
+            <!-- element that maps the noise onto the image; connected via 'filter' property in CSS -->
+            <feDisplacementMap in="SourceGraphic" in2="static" scale="0">
+              <animate attributeName="scale" values="0;40;0" dur="800ms" repeatCount="1" begin="card.mouseenter" />
+            </feDisplacementMap>
+      
+          </filter>
+        </defs>
+      </svg>
+</body>
+<script src=script.js></script>
+
+</html>

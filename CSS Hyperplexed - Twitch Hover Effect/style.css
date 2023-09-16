@@ -1,0 +1,120 @@
+:root {
+  --border: rgb(3, 169, 244);
+  
+  --g1: rgb(98, 0, 234);
+  --g2: rgb(236, 64, 122);
+  --g3: rgb(253, 216, 53);
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+  background-color: rgb(20,20,20);
+}
+
+.card {
+  position: relative;
+  width: 56vmin;
+  aspect-ratio: 1 / 1.6;
+  
+  border: 0.5vmin solid var(--border);
+  
+  cursor: pointer;
+  
+}
+
+.card:before {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  z-index: 1;
+  
+  content: "";
+  width: 100%;
+  height: 100%;
+  
+  /* background gradient */
+  background: linear-gradient(
+    130deg,
+    transparent 0% 33%,
+    var(--g1) 66%,
+    var(--g2) 83.5%,
+    var(--g3) 100%
+  );
+  background-position: 0% 0%;
+  background-size: 300% 300%; /* gradient starts outside the border */
+  
+  transition: background-position 350ms ease, transform 350ms ease;
+}
+
+.card:hover:before {
+  background-position: 100% 100%;
+  transform: scale(1.08, 1.03);
+}
+
+.card-content {
+  position: relative;
+  z-index: 2;
+  width: calc(100% - 10vmin);
+  height: calc(100% - 10vmin);
+  padding: 5vmin;
+  
+  /* tiled dots background */
+  background: radial-gradient(
+    rgba(255,255,255,0.2) 8%,
+    transparent 8%
+  );
+  background-position: 0% 0%;
+  background-size: 5vmin 5vmin;
+  
+  transition: background-position 350ms ease;
+}
+
+.card:hover > .card-content {
+  background-position: -10% 0%;
+}
+
+/* this transition styling needs to be up here for some reason... */
+.card:hover > .card-content > .card-subtitle > .card-subtitle-word {  
+  opacity: 1;
+  transform: translateY(0%);
+  
+  /* I don't quite know how cubic-bezier works */
+  transition:
+    opacity 0ms,
+    transform 200ms cubic-bezier(.90, .06, .15, .90);
+}
+
+/* TEXT */
+
+.card-title, .card-subtitle {
+  color: white;
+  font-family: "Rubik";
+  font-weight: 400;
+  margin: 0px;
+}
+
+.card-title {
+  font-size: 6vmin;
+}
+
+.card-subtitle {
+  font-size: 3vmin;
+  margin-top: 2vmin;
+}
+
+.card-subtitle-word {
+  display: inline-block;
+  position: relative;
+  margin: 0vmin 0.3vmin;
+  
+  opacity: 0;
+  transform: translateY(40%);
+  transition: none;
+};
+
