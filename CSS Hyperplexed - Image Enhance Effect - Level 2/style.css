@@ -31,7 +31,7 @@ body:has(.card[data-color="green"]:hover) {
 }
 
 body:has(.card[data-color="brown"]:hover) {
-    background-color: rgb(var(--brown-rgb) / 25%);
+    background-color: rgb(var(--brown-rgb) / 50%);
 }
 
 
